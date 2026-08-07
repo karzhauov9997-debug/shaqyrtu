@@ -62,10 +62,10 @@
         }
 
         .glass-tilda {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.35);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
         }
         
@@ -82,56 +82,53 @@
 
         .gold-text { color: #C59B27; }
 
-        /* KAZAKH ORNAMENT TOP EMBLEM */
-        .kazakh-top-ornament {
+        /* CUSTOM TILDA VECTOR ORNAMENTS WITH ROTATION & PARALLAX */
+        .tilda-vector-top {
             position: absolute;
             top: -45px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90px;
-            height: 90px;
+            width: 85px;
+            height: 85px;
             z-index: 30;
-            color: #D4AF37;
-            filter: drop-shadow(0px 4px 10px rgba(212, 175, 55, 0.3));
+            filter: drop-shadow(0px 4px 8px rgba(212, 175, 55, 0.4));
+            transition: transform 0.1s linear;
         }
 
-        /* CORNER ORNAMENTS */
-        .corner-ornament {
+        .corner-vector {
             position: absolute;
-            width: 45px;
-            height: 45px;
-            color: #D4AF37;
-            opacity: 0.6;
+            width: 50px;
+            height: 50px;
+            opacity: 0.75;
+            transition: transform 0.1s linear;
         }
         .corner-tl { top: 12px; left: 12px; }
         .corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
         .corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
         .corner-br { bottom: 12px; right: 12px; transform: scale(-1); }
 
-        /* FIXED MOVING SIDE ORNAMENTS */
-        .kazakh-ornament-left {
+        /* FIXED FLOATING SIDE VECTOR ORNAMENTS */
+        .fixed-side-vector-left {
             position: fixed;
-            top: 30%;
-            left: -15px;
-            width: 130px;
-            height: 130px;
-            z-index: 20;
+            top: 28%;
+            left: -20px;
+            width: 120px;
+            height: 120px;
+            z-index: 25;
             pointer-events: none;
-            color: #D4AF37;
-            opacity: 0.55;
+            opacity: 0.7;
             transition: transform 0.1s linear;
         }
 
-        .kazakh-ornament-right {
+        .fixed-side-vector-right {
             position: fixed;
-            top: 55%;
-            right: -15px;
-            width: 130px;
-            height: 130px;
-            z-index: 20;
+            top: 60%;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            z-index: 25;
             pointer-events: none;
-            color: #D4AF37;
-            opacity: 0.55;
+            opacity: 0.7;
             transition: transform 0.1s linear;
         }
 
@@ -157,18 +154,9 @@
 
     <div id="scrollProgress"></div>
 
-    <!-- SIDE MOVING KAZAKH ORNAMENTS -->
-    <div class="kazakh-ornament-left" id="ornamentLeft">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-            <path d="M50 5 C30 5 15 20 15 38 C15 50 25 58 35 62 C22 66 5 75 5 90 C5 98 15 100 25 100 C38 100 48 88 50 82 C52 88 62 100 75 100 C85 100 95 98 95 90 C95 75 78 66 65 62 C75 58 85 50 85 38 C85 20 70 5 50 5 Z M50 20 C60 20 68 28 68 38 C68 48 60 55 50 55 C40 55 32 48 32 38 C32 28 40 20 50 20 Z"/>
-        </svg>
-    </div>
-
-    <div class="kazakh-ornament-right" id="ornamentRight">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-            <path d="M50 5 C30 5 15 20 15 38 C15 50 25 58 35 62 C22 66 5 75 5 90 C5 98 15 100 25 100 C38 100 48 88 50 82 C52 88 62 100 75 100 C85 100 95 98 95 90 C95 75 78 66 65 62 C75 58 85 50 85 38 C85 20 70 5 50 5 Z M50 20 C60 20 68 28 68 38 C68 48 60 55 50 55 C40 55 32 48 32 38 C32 28 40 20 50 20 Z"/>
-        </svg>
-    </div>
+    <!-- FLOATING ROTATING VECTOR ORNAMENTS ON SIDES -->
+    <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="fixed-side-vector-left" id="sideVectorLeft" alt="Ornament">
+    <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="fixed-side-vector-right" id="sideVectorRight" alt="Ornament">
 
     
 
@@ -181,15 +169,9 @@
         <div class="relative z-10 text-white max-w-3xl space-y-6 px-4">
             <p class="font-montserrat text-xs sm:text-sm tracking-[0.3em] uppercase text-gold-300 font-medium">Шақыру карточкасы</p>
             
-            <div class="w-24 sm:w-32 mx-auto text-gold-400 opacity-90 animate-spin-slow">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
-                    <circle cx="50" cy="50" r="44" />
-                    <circle cx="50" cy="50" r="20" />
-                    <line x1="50" y1="6" x2="50" y2="94" />
-                    <line x1="6" y1="50" x2="94" y2="50" />
-                    <line x1="19" y1="19" x2="81" y2="81" />
-                    <line x1="19" y1="81" x2="81" y2="19" />
-                </svg>
+            <!-- ROTATING CENTER TILDA VECTOR ORNAMENT -->
+            <div class="w-24 sm:w-32 mx-auto">
+                <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="w-full h-full object-contain animate-spin-slow" alt="Kazakh Ornament">
             </div>
 
             <h1 class="font-cormorant text-5xl sm:text-8xl font-semibold tracking-wide text-white">
@@ -215,30 +197,18 @@
         </div>
     </section>
 
-    <!-- INVITATION TEXT WITH REAL TOP KAZAKH ORNAMENT -->
+    <!-- INVITATION SECTION WITH SCROLL-ROTATING TILDA VECTOR ORNAMENT -->
     <section id="invitation" class="py-24 px-4 max-w-3xl mx-auto text-center gs-reveal relative">
         <div class="glass-tilda p-8 sm:p-16 rounded-[2.5rem] relative mt-10">
             
-            <!-- KAZAKH ORNAMENT EMBLEM INSTEAD OF SIMPLE RHOMBUS -->
-            <div class="kazakh-top-ornament">
-                <svg viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M50 0 C30 0 15 15 15 35 C15 48 25 58 35 62 C22 66 5 75 5 90 C5 98 15 100 25 100 C38 100 48 88 50 82 C52 88 62 100 75 100 C85 100 95 98 95 90 C95 75 78 66 65 62 C75 58 85 48 85 35 C85 15 70 0 50 0 Z M50 18 C58 18 65 25 65 35 C65 45 58 52 50 52 C42 52 35 45 35 35 C35 25 42 18 50 18 Z"/>
-                </svg>
-            </div>
+            <!-- TOP TILDA VECTOR ORNAMENT (SCROLL-ROTATING) -->
+            <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="tilda-vector-top scroll-rotate-element" alt="Ornament">
 
-            <!-- CORNER ORNAMENTS FOR BEAUTY -->
-            <div class="corner-ornament corner-tl">
-                <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 C60 0 0 60 0 100 Z M30 30 C40 10 10 40 30 30 Z"/></svg>
-            </div>
-            <div class="corner-ornament corner-tr">
-                <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 C60 0 0 60 0 100 Z M30 30 C40 10 10 40 30 30 Z"/></svg>
-            </div>
-            <div class="corner-ornament corner-bl">
-                <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 C60 0 0 60 0 100 Z M30 30 C40 10 10 40 30 30 Z"/></svg>
-            </div>
-            <div class="corner-ornament corner-br">
-                <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 C60 0 0 60 0 100 Z M30 30 C40 10 10 40 30 30 Z"/></svg>
-            </div>
+            <!-- CORNER VECTOR ORNAMENTS -->
+            <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="corner-vector corner-tl scroll-rotate-element" alt="Ornament">
+            <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="corner-vector corner-tr scroll-rotate-element" alt="Ornament">
+            <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="corner-vector corner-bl scroll-rotate-element" alt="Ornament">
+            <img src="https://static.tildacdn.pro/tild6663-3137-4361-b135-663737366637/Vector.png" class="corner-vector corner-br scroll-rotate-element" alt="Ornament">
 
             <h2 class="font-cormorant text-3xl sm:text-5xl font-semibold gold-text mb-6 pt-4">
                 Салтанатты Шақыру
@@ -339,16 +309,21 @@
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // PARALLAX FOR SIDE ORNAMENTS
+        // REAL SCROLL ROTATION FOR VECTOR ORNAMENTS
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
             document.getElementById('scrollProgress').style.width = (scrolled / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%';
 
-            const ornLeft = document.getElementById('ornamentLeft');
-            const ornRight = document.getElementById('ornamentRight');
+            const leftVec = document.getElementById('sideVectorLeft');
+            const rightVec = document.getElementById('sideVectorRight');
 
-            if(ornLeft) ornLeft.style.transform = `translateY(${scrolled * 0.12}px) rotate(${scrolled * 0.15}deg)`;
-            if(ornRight) ornRight.style.transform = `translateY(-${scrolled * 0.12}px) rotate(-${scrolled * 0.15}deg)`;
+            if(leftVec) leftVec.style.transform = `translateY(${scrolled * 0.15}px) rotate(${scrolled * 0.3}deg)`;
+            if(rightVec) rightVec.style.transform = `translateY(-${scrolled * 0.15}px) rotate(-${scrolled * 0.3}deg)`;
+
+            document.querySelectorAll('.scroll-rotate-element').forEach((el, index) => {
+                const dir = index % 2 === 0 ? 1 : -1;
+                el.style.transform = `rotate(${scrolled * 0.25 * dir}deg)`;
+            });
         });
 
         gsap.registerPlugin(ScrollTrigger);
