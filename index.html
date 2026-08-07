@@ -80,18 +80,35 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
-        .ornament-corner {
+        
+        /* FIX FOR CORNER ORNAMENTS */
+        .corner-ornament-left {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            top: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
             z-index: 30;
             pointer-events: none;
         }
+        .corner-ornament-right {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            z-index: 30;
+            pointer-events: none;
+            transform: scaleX(-1);
+        }
         @media (min-width: 640px) {
-            .ornament-corner {
-                width: 90px;
-                height: 90px;
+            .corner-ornament-left, .corner-ornament-right {
+                width: 80px;
+                height: 80px;
+                top: 25px;
             }
+            .corner-ornament-left { left: 25px; }
+            .corner-ornament-right { right: 25px; }
         }
     </style>
 </head>
@@ -108,21 +125,22 @@
                 <div class="absolute inset-0 bg-gradient-to-b from-warmDark/85 via-warmDark/65 to-warmDark/90 backdrop-blur-[1px]"></div>
             </div>
 
-            <!-- KAZAKH CORNER ORNAMENTS -->
-            <div class="ornament-corner top-4 left-4 text-gold-400 gold-glow">
+            <!-- CLEAN KAZAKH CORNER ORNAMENTS -->
+            <div class="corner-ornament-left gold-glow text-gold-400">
                 <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                    <path d="M0,0 L100,0 L100,12 L12,12 L12,100 L0,100 Z M25,25 C45,25 65,45 65,65 C45,65 25,45 25,25 Z"/>
+                    <path d="M0 0 L100 0 L100 15 L15 15 L15 100 L0 100 Z M30 30 C50 30 70 50 70 70 C50 70 30 50 30 30 Z"/>
                 </svg>
             </div>
-            <div class="ornament-corner top-4 right-4 text-gold-400 gold-glow transform scale-x-[-1]">
+            <div class="corner-ornament-right gold-glow text-gold-400">
                 <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                    <path d="M0,0 L100,0 L100,12 L12,12 L12,100 L0,100 Z M25,25 C45,25 65,45 65,65 C45,65 25,45 25,25 Z"/>
+                    <path d="M0 0 L100 0 L100 15 L15 15 L15 100 L0 100 Z M30 30 C50 30 70 50 70 70 C50 70 30 50 30 30 Z"/>
                 </svg>
             </div>
 
             <div class="relative z-20 max-w-3xl space-y-5 text-white px-2 mt-4">
                 <p class="font-montserrat text-[10px] sm:text-xs tracking-[0.3em] uppercase text-gold-300 font-medium">Үйлену тойы</p>
                 
+                <!-- SHANYRAQ CENTER -->
                 <div class="hero-shanyraq w-20 h-20 sm:w-28 sm:h-28 mx-auto text-gold-400 opacity-95 gold-glow my-2">
                     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" class="w-full h-full">
                         <circle cx="50" cy="50" r="44"/>
