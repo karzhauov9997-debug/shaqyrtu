@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Қыз ұзату тойы — Нұрсәуле | Kazakh National Luxury Invitation</title>
+    <title>Үйлену тойы — Нұрсәуле | Kazakh Animated Invitation</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,13 +62,12 @@
             transition: width 0.1s ease-out;
         }
 
-        /* Glassmorphism */
         .glass-luxury {
-            background: rgba(255, 255, 255, 0.68);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06), inset 0 0 15px rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
         }
         
         .glass-btn {
@@ -100,12 +97,14 @@
             z-index: 5;
         }
 
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+        /* Floating Parallax Kazakh Ornaments */
+        .movable-ornament {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.3;
+            transition: transform 0.2s ease-out;
         }
-        .animate-slow-zoom { animation: slowZoom 28s infinite ease-in-out; }
 
         @keyframes goldGlow {
             0%, 100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.3); }
@@ -117,50 +116,17 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        .animate-spin-slow { animation: spinSlow 15s linear infinite; }
+        .animate-spin-slow { animation: spinSlow 20s linear infinite; }
 
-        @keyframes heartPulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
-            70% { transform: scale(1.2); box-shadow: 0 0 0 18px rgba(212, 175, 55, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
         .heart-active {
             animation: heartPulse 1.8s infinite;
             background: linear-gradient(135deg, #D4AF37, #AA771C) !important;
             color: #FFFFFF !important;
         }
-
-        /* Equalizer Bars */
-        .eq-bar {
-            width: 3px;
-            background: #D4AF37;
-            animation: eqBounce 1.2s infinite ease-in-out alternate;
-        }
-        @keyframes eqBounce {
-            0% { height: 4px; }
-            100% { height: 18px; }
-        }
-
-        /* Side Kazakh Ornaments Parallax */
-        .side-ornament-left {
-            position: fixed;
-            top: 25%;
-            left: -30px;
-            width: 120px;
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 2;
-            transition: transform 0.1s linear;
-        }
-        .side-ornament-right {
-            position: fixed;
-            top: 25%;
-            right: -30px;
-            width: 120px;
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 2;
-            transition: transform 0.1s linear;
+        @keyframes heartPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
+            70% { transform: scale(1.2); box-shadow: 0 0 0 18px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
     </style>
 </head>
@@ -169,46 +135,31 @@
     <div id="scrollProgress"></div>
     <canvas id="cinematicCanvas"></canvas>
 
-    <!-- FLOATING KAZAKH ORNAMENTS (PARALLAX ENHANCED) -->
-    <div class="side-ornament-left hidden md:block" id="ornamentLeft">
-        <svg viewBox="0 0 100 300" fill="#D4AF37">
-            <path d="M50 0 C20 50 0 100 50 150 C100 200 80 250 50 300 C20 250 0 200 50 150 C100 100 80 50 50 0 Z"/>
-        </svg>
-    </div>
-    <div class="side-ornament-right hidden md:block" id="ornamentRight">
-        <svg viewBox="0 0 100 300" fill="#D4AF37">
-            <path d="M50 0 C20 50 0 100 50 150 C100 200 80 250 50 300 C20 250 0 200 50 150 C100 100 80 50 50 0 Z"/>
-        </svg>
-    </div>
-
     
-    <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
-        <div id="eqContainer" class="hidden sm:flex items-end gap-1 h-5 px-3 py-1 rounded-full glass-luxury">
-            <div class="eq-bar" style="animation-delay: 0.1s"></div>
-            <div class="eq-bar" style="animation-delay: 0.3s"></div>
-            <div class="eq-bar" style="animation-delay: 0.2s"></div>
-            <div class="eq-bar" style="animation-delay: 0.4s"></div>
-        </div>
-        <button id="musicToggle" onclick="toggleMusic()" class="glass-luxury w-16 h-16 rounded-full flex items-center justify-center text-gold-500 shadow-2xl border border-gold-400 active:scale-95 transition-all group" title="Қосу / Өшіру">
-            <div class="relative flex items-center justify-center">
-                <i id="musicVinyl" class="fas fa-drum text-2xl transition-transform duration-1000"></i>
-            </div>
+    <div class="fixed top-6 right-6 z-50">
+        <button id="musicToggle" onclick="toggleMusic()" class="glass-luxury w-16 h-16 rounded-full flex items-center justify-center text-gold-500 shadow-2xl border border-gold-400 active:scale-95 transition-all group">
+            <i id="musicVinyl" class="fas fa-compact-disc text-3xl"></i>
         </button>
         <audio id="bgAudio" loop preload="auto"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
     </div>
     
 
-    <!-- INTRO / HERO SECTION -->
+    <!-- HERO SECTION -->
     <section class="relative h-screen w-full flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center animate-slow-zoom" 
-             style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=80');">
             <div class="absolute inset-0 bg-gradient-to-b from-warmdark/90 via-warmdark/65 to-warmdark/95 backdrop-blur-[1px]"></div>
         </div>
 
-        <div class="relative z-10 text-white max-w-4xl space-y-6 px-4 hero-content">
-            
-            <!-- Traditional Shanyraq SVG Emblem -->
-            <div class="w-28 sm:w-36 mx-auto text-gold-400 opacity-90 animate-pulse">
+        <!-- Animated Side Kazakh Ornaments -->
+        <div class="movable-ornament top-12 left-4 w-24 sm:w-40 text-gold-400 ornament-parallax-1">
+            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 C20 30 0 50 50 100 C100 50 80 30 50 0 Z"/></svg>
+        </div>
+        <div class="movable-ornament top-12 right-4 w-24 sm:w-40 text-gold-400 ornament-parallax-2">
+            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 C20 30 0 50 50 100 C100 50 80 30 50 0 Z"/></svg>
+        </div>
+
+        <div class="relative z-10 text-white max-w-4xl space-y-6 px-4">
+            <div class="w-28 sm:w-36 mx-auto text-gold-400 opacity-90 animate-spin-slow">
                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
                     <circle cx="50" cy="50" r="45" />
                     <line x1="50" y1="5" x2="50" y2="95" />
@@ -218,21 +169,21 @@
                 </svg>
             </div>
 
-            <p class="font-cormorant text-2xl sm:text-4xl tracking-[0.25em] uppercase text-gold-300 drop-shadow">Құрметті қонақтар!</p>
+            <p class="font-cormorant text-2xl sm:text-4xl tracking-[0.25em] uppercase text-gold-300">Құрметті қонақтар!</p>
             
-            <p class="text-xs sm:text-base font-light tracking-[0.2em] max-w-xl mx-auto text-stone-200 leading-relaxed">
-                Сіздерді қуанышымыздың ең жарқын, салтанатты кешінің қадірлі қонағы болуға шын жүректен шақырамыз.
+            <p class="text-xs sm:text-base font-light tracking-[0.2em] max-w-xl mx-auto text-stone-200">
+                Сіздерді қуанышымыздың қадірлі қонағы болуға салтанатты түрде шақырамыз.
             </p>
 
-            <div class="relative w-48 h-48 sm:w-64 sm:h-64 mx-auto my-6 rounded-full p-1.5 gold-glow-border border-2 border-gold-400 shadow-2xl overflow-hidden hero-avatar-box">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80" alt="Hero Image" class="w-full h-full object-cover rounded-full">
+            <div class="relative w-48 h-48 sm:w-64 sm:h-64 mx-auto my-6 rounded-full p-1.5 gold-glow-border border-2 border-gold-400 shadow-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=80" alt="Hero Image" class="w-full h-full object-cover rounded-full">
             </div>
 
-            <h1 class="font-cormorant text-6xl sm:text-9xl font-bold tracking-wide gold-gradient-text drop-shadow-2xl">
+            <h1 class="font-cormorant text-6xl sm:text-9xl font-bold tracking-wide gold-gradient-text">
                 Нұрсәуле
             </h1>
 
-            <p class="font-vibes text-3xl sm:text-5xl text-champagne drop-shadow-md">Қыз ұзату тойы</p>
+            <p class="font-vibes text-3xl sm:text-5xl text-champagne">Үйлену тойы</p>
 
             <div class="pt-6">
                 <a href="#invitation" onclick="playMusicOnInteraction()" class="glass-btn inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-xs sm:text-sm uppercase tracking-widest text-gold-600 shadow-2xl">
@@ -240,32 +191,23 @@
                     <i class="fas fa-chevron-down text-xs animate-bounce"></i>
                 </a>
             </div>
-
-            <div class="pt-4 text-xs text-stone-400 tracking-widest uppercase opacity-80">
-                Төменге сырғытыңыз ↓
-            </div>
         </div>
     </section>
 
-    <!-- SHAKYRU TEXT SECTION -->
-    <section id="invitation" class="py-28 px-4 max-w-4xl mx-auto text-center gs-reveal">
-        <div class="glass-luxury p-8 sm:p-20 rounded-[3rem] relative border border-gold-400/50 shadow-2xl overflow-hidden">
-            
-            <!-- Top Ornament SVG -->
-            <div class="w-24 mx-auto mb-6 text-gold-500 opacity-80">
-                <svg viewBox="0 0 100 30" fill="currentColor"><path d="M50 0 L65 15 L50 30 L35 15 Z"/></svg>
-            </div>
+    <!-- INVITATION TEXT SECTION -->
+    <section id="invitation" class="py-28 px-4 max-w-4xl mx-auto text-center gs-reveal relative">
+        <div class="movable-ornament -top-10 left-1/2 -translate-x-1/2 w-32 text-gold-500 opacity-20 ornament-rotate">
+            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>
+        </div>
 
-            <h2 class="font-cormorant text-3xl sm:text-6xl font-semibold text-gold-600 mb-8 tracking-wide">
+        <div class="glass-luxury p-8 sm:p-20 rounded-[3rem] relative border border-gold-400/50 shadow-2xl">
+            <h2 class="font-cormorant text-3xl sm:text-6xl font-semibold text-gold-600 mb-8">
                 Салтанатты Шақыру
             </h2>
-            
             <p class="text-xl sm:text-3xl leading-relaxed font-cormorant text-stone-800 italic font-medium">
                 "Сіздерді аяулы қызымыз Нұрсәуленің ұзату тойына арналған салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!"
             </p>
-            
             <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-10"></div>
-            
             
             <p class="mt-8 text-sm sm:text-base font-bold uppercase tracking-widest text-gold-600">
                 Той иелері: Бақытбек & Гульнара
@@ -274,39 +216,34 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE CALENDAR SECTION -->
+    <!-- CALENDAR -->
     <section class="py-16 px-4 max-w-4xl mx-auto gs-reveal">
-        <div class="glass-luxury p-8 sm:p-14 rounded-[3rem] border border-gold-400/50 text-center space-y-6 shadow-xl">
+        <div class="glass-luxury p-8 sm:p-14 rounded-[3rem] border border-gold-400/50 text-center space-y-6">
             <h3 class="font-cormorant text-4xl sm:text-5xl font-bold gold-gradient-text">Қыркүйек 2026</h3>
             <p class="text-xs uppercase tracking-widest text-stone-500">Той болатын салтанатты күн</p>
-            
             <div class="max-w-md mx-auto">
-                <div class="grid grid-cols-7 gap-2 mb-4 text-xs font-bold uppercase text-gold-600 tracking-wider">
+                <div class="grid grid-cols-7 gap-2 mb-4 text-xs font-bold uppercase text-gold-600">
                     <div>Дс</div><div>Сс</div><div>Ср</div><div>Бс</div><div>Жм</div><div>Сб</div><div>Жс</div>
                 </div>
-                <div class="grid grid-cols-7 gap-2 text-sm font-semibold text-stone-700" id="calendarDaysGrid">
-                </div>
+                <div class="grid grid-cols-7 gap-2 text-sm font-semibold text-stone-700" id="calendarDaysGrid"></div>
             </div>
-            <p class="text-xs italic text-stone-500 mt-4"><i class="fas fa-heart text-gold-500 mr-1"></i> Соғып тұрған жүрекше той күнін білдіреді</p>
         </div>
     </section>
 
-    <!-- EVENT DETAILS CARDS WITH KAZAKH ORNAMENTS -->
+    <!-- DETAILS -->
     <section class="py-12 px-4 max-w-5xl mx-auto gs-reveal">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300/60 hover:scale-105 transition-transform duration-500 relative">
+            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300">
                 <i class="far fa-calendar-alt text-5xl text-gold-500 mb-4"></i>
                 <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500">Күні</h4>
                 <p class="font-cormorant text-3xl font-bold mt-2 text-stone-800">18.09.2026</p>
             </div>
-            
-            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300/60 hover:scale-105 transition-transform duration-500 relative">
+            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300">
                 <i class="far fa-clock text-5xl text-gold-500 mb-4"></i>
                 <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500">Уақыты</h4>
                 <p class="font-cormorant text-3xl font-bold mt-2 text-stone-800">18:00</p>
             </div>
-            
-            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300/60 hover:scale-105 transition-transform duration-500 relative">
+            <div class="glass-luxury p-10 rounded-[2.5rem] border border-gold-300">
                 <i class="fas fa-map-marker-alt text-5xl text-gold-500 mb-4"></i>
                 <h4 class="text-xs font-bold uppercase tracking-widest text-stone-500">Мекенжай</h4>
                 <p class="font-cormorant text-2xl font-bold mt-2 text-stone-800">«Rixos Khadisha» мейрамханасы</p>
@@ -314,27 +251,26 @@
         </div>
     </section>
 
-    <!-- COUNTDOWN TIMER -->
+    <!-- TIMER -->
     
     <section class="py-16 px-4 max-w-4xl mx-auto text-center gs-reveal">
         <div class="glass-luxury p-10 sm:p-14 rounded-[3rem] border border-gold-400/50 shadow-2xl">
             <h3 class="font-cormorant text-4xl sm:text-5xl font-bold gold-gradient-text mb-10">Той Салтанатына Дейін:</h3>
             <div class="grid grid-cols-4 gap-3 sm:gap-8">
-                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200 shadow-sm"><span id="days" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase tracking-widest text-stone-500 mt-2">Күн</p></div>
-                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200 shadow-sm"><span id="hours" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase tracking-widest text-stone-500 mt-2">Сағат</p></div>
-                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200 shadow-sm"><span id="minutes" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase tracking-widest text-stone-500 mt-2">Минут</p></div>
-                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200 shadow-sm"><span id="seconds" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase tracking-widest text-stone-500 mt-2">Секунд</p></div>
+                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200"><span id="days" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase text-stone-500 mt-2">Күн</p></div>
+                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200"><span id="hours" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase text-stone-500 mt-2">Сағат</p></div>
+                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200"><span id="minutes" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase text-stone-500 mt-2">Минут</p></div>
+                <div class="bg-white/80 p-4 sm:p-8 rounded-3xl border border-gold-200"><span id="seconds" class="text-3xl sm:text-6xl font-bold font-cormorant text-stone-800">00</span><p class="text-[10px] sm:text-xs uppercase text-stone-500 mt-2">Секунд</p></div>
             </div>
         </div>
     </section>
     
 
-    <!-- MAP SECTION -->
+    <!-- MAP -->
     
     <section class="py-12 px-4 max-w-4xl mx-auto text-center gs-reveal">
         <div class="glass-luxury p-8 sm:p-12 rounded-[3rem] space-y-6 border border-gold-300">
             <h3 class="font-cormorant text-3xl sm:text-4xl font-bold text-stone-800">Карта Арқылы Бағыт Алу</h3>
-            <p class="text-xs text-stone-500 uppercase tracking-widest">Мейрамхананың нақты орналасқан жері</p>
             <a href="https://2gis.kz" target="_blank" class="glass-btn inline-flex items-center gap-3 px-10 py-4 rounded-full text-xs sm:text-sm font-semibold text-gold-600 shadow-lg">
                 <i class="fas fa-location-arrow"></i> Бағыт ашу (2GIS / Google Maps)
             </a>
@@ -342,28 +278,25 @@
     </section>
     
 
-    <!-- RSVP SECTION -->
+    <!-- RSVP -->
     <section class="py-16 px-4 max-w-2xl mx-auto text-center gs-reveal">
         <div class="glass-luxury p-10 sm:p-14 rounded-[3rem] border border-gold-400/50 shadow-2xl space-y-6">
             <h3 class="font-cormorant text-4xl sm:text-5xl font-bold gold-gradient-text">Қатысуыңызды Растаңыз</h3>
-            <p class="text-xs text-stone-500 uppercase tracking-widest">Сізді асыға күтеміз</p>
             <form id="rsvpForm" onsubmit="saveGuest(event)" class="space-y-4">
-                <input type="text" id="guestName" required placeholder="Аты-жөніңіз (Мысалы: Арман & Айнаш)" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400">
-                <input type="tel" id="guestPhone" placeholder="Телефон нөміріңіз (+7 707 000-00-00)" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400">
-                
+                <input type="text" id="guestName" required placeholder="Аты-жөніңіз" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm">
+                <input type="tel" id="guestPhone" placeholder="Телефон нөміріңіз" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <select id="guestStatus" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm focus:outline-none">
+                    <select id="guestStatus" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm">
                         <option value="Келемін ✅">Келемін ✅</option>
                         <option value="Келе алмаймын ❌">Келе алмаймын ❌</option>
-                        <option value="Кейін айтамын ⏳">Кейін айтамын ⏳</option>
                     </select>
-                    <select id="guestCount" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm focus:outline-none">
+                    <select id="guestCount" class="w-full px-5 py-4 rounded-2xl border border-gold-200 bg-white/90 text-sm">
                         <option value="1 адам">1 адам</option>
                         <option value="2 адам">2 адам</option>
                         <option value="3+ адам">3+ адам</option>
                     </select>
                 </div>
-                <button type="submit" class="glass-btn w-full py-4 rounded-2xl font-bold uppercase text-gold-600 tracking-wider text-xs sm:text-sm shadow-md">Жауапты жіберу</button>
+                <button type="submit" class="glass-btn w-full py-4 rounded-2xl font-bold uppercase text-gold-600 text-xs sm:text-sm">Жауапты жіберу</button>
             </form>
             <p id="rsvpSuccess" class="hidden text-green-600 font-bold mt-2">Рахмет! Жауабыңыз сақталды. ✨</p>
         </div>
@@ -371,55 +304,26 @@
 
     <footer class="py-24 text-center space-y-6">
         <p class="font-vibes text-5xl sm:text-6xl text-gold-600">Сіздерді асыға күтеміз!</p>
-        <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-        
-        <div class="pt-6">
-            <button onclick="openAdminModal()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-gold-300 text-xs font-semibold text-stone-600 hover:bg-gold-100 transition shadow-sm">
-                <i class="fas fa-lock text-gold-500"></i> Қонақтар тізімін көру (Админ)
-            </button>
-        </div>
     </footer>
 
-    <!-- ADMIN MODAL -->
-    <div id="adminModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-luxury max-w-lg w-full p-8 rounded-3xl border border-gold-400 relative">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-stone-500 hover:text-stone-800 text-xl"><i class="fas fa-times"></i></button>
-
-            <div id="loginPassSection" class="space-y-4 text-center">
-                <h3 class="font-cormorant text-2xl font-bold text-stone-800">Админ Панельге Кіру</h3>
-                <input type="password" id="adminPass" placeholder="Пароль жазыңыз (Әдепкі: 1234)" class="w-full px-4 py-3 rounded-xl border border-gold-300 bg-white/90 text-sm text-center">
-                <button onclick="checkAdminPass()" class="glass-btn w-full py-3 rounded-xl text-xs font-bold uppercase text-gold-600">Кіру</button>
-            </div>
-
-            <div id="guestListSection" class="hidden space-y-4">
-                <h3 class="font-cormorant text-2xl font-bold text-stone-800 text-center">Қонақтар Тізімі</h3>
-                <div id="guestsTableContainer" class="max-h-60 overflow-y-auto space-y-2 text-xs text-left"></div>
-                <button onclick="clearGuests()" class="w-full py-2 bg-red-100 text-red-700 rounded-xl text-xs font-bold hover:bg-red-200">Тізімді тазалау</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lenis & GSAP Animation Scripts -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script>
         const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // Scroll Progress & Side Parallax
+        // ADVANCED SCROLL PARALLAX FOR KAZAKH ORNAMENTS
         window.addEventListener('scroll', () => {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
+            const scrolled = window.scrollY;
+            document.getElementById('scrollProgress').style.width = (scrolled / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%';
 
-            // Parallax side ornaments
-            const ornLeft = document.getElementById('ornamentLeft');
-            const ornRight = document.getElementById('ornamentRight');
-            if(ornLeft && ornRight) {
-                ornLeft.style.transform = `translateY(${winScroll * 0.15}px) rotate(${winScroll * 0.05}deg)`;
-                ornRight.style.transform = `translateY(${winScroll * 0.15}px) rotate(-${winScroll * 0.05}deg)`;
-            }
+            const orn1 = document.querySelector('.ornament-parallax-1');
+            const orn2 = document.querySelector('.ornament-parallax-2');
+            const ornRot = document.querySelector('.ornament-rotate');
+
+            if(orn1) orn1.style.transform = `translateY(${scrolled * 0.25}px) rotate(${scrolled * 0.1}deg)`;
+            if(orn2) orn2.style.transform = `translateY(${scrolled * 0.2}px) rotate(-${scrolled * 0.1}deg)`;
+            if(ornRot) ornRot.style.transform = `translateX(-50%) rotate(${scrolled * 0.15}deg) scale(${1 + scrolled * 0.0005})`;
         });
 
         gsap.registerPlugin(ScrollTrigger);
@@ -430,29 +334,20 @@
             );
         });
 
-        window.addEventListener('load', () => {
-            confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 }, colors: ['#D4AF37', '#F3E5AB', '#FAF8F5'] });
-        });
-
         const eventDay = 18;
         const totalDays = 30;
         const startOffset = 1;
         const daysContainer = document.getElementById('calendarDaysGrid');
 
-        for (let i = 0; i < startOffset; i++) {
-            const emptyDiv = document.createElement('div');
-            daysContainer.appendChild(emptyDiv);
-        }
-
+        for (let i = 0; i < startOffset; i++) daysContainer.appendChild(document.createElement('div'));
         for (let day = 1; day <= totalDays; day++) {
             const dayCell = document.createElement('div');
-            dayCell.className = "w-10 h-10 mx-auto flex items-center justify-center rounded-full transition-all text-stone-700";
+            dayCell.className = "w-10 h-10 mx-auto flex items-center justify-center rounded-full text-stone-700";
             if (day === eventDay) {
-                dayCell.className += " heart-active font-bold text-lg shadow-lg relative";
+                dayCell.className += " heart-active font-bold text-lg relative";
                 dayCell.innerHTML = `<span>${day}</span><i class="fas fa-heart text-[8px] absolute -top-1 -right-1 text-red-500 animate-ping"></i>`;
             } else {
                 dayCell.innerText = day;
-                dayCell.className += " hover:bg-gold-100/50";
             }
             daysContainer.appendChild(dayCell);
         }
@@ -460,108 +355,41 @@
         
         const audio = document.getElementById('bgAudio');
         const vinyl = document.getElementById('musicVinyl');
-        const eq = document.getElementById('eqContainer');
         function toggleMusic() {
-            if (audio.paused) { 
-                audio.play(); 
-                vinyl.classList.add('animate-spin-slow');
-                if(eq) eq.classList.remove('hidden');
-            } else { 
-                audio.pause(); 
-                vinyl.classList.remove('animate-spin-slow');
-                if(eq) eq.classList.add('hidden');
-            }
+            if (audio.paused) { audio.play(); vinyl.classList.add('animate-spin-slow'); }
+            else { audio.pause(); vinyl.classList.remove('animate-spin-slow'); }
         }
         function playMusicOnInteraction() {
-            if (audio.paused) {
-                audio.play().then(() => { 
-                    vinyl.classList.add('animate-spin-slow');
-                    if(eq) eq.classList.remove('hidden');
-                }).catch(e => console.log(e));
-            }
+            if (audio.paused) { audio.play().then(() => vinyl.classList.add('animate-spin-slow')).catch(e => console.log(e)); }
         }
-        document.addEventListener('click', function() { playMusicOnInteraction(); }, { once: true });
+        document.addEventListener('click', () => playMusicOnInteraction(), { once: true });
         
 
         function saveGuest(e) {
             e.preventDefault();
-            const name = document.getElementById('guestName').value;
-            const phone = document.getElementById('guestPhone').value || '-';
-            const status = document.getElementById('guestStatus').value;
-            const count = document.getElementById('guestCount').value;
-
-            const guests = JSON.parse(localStorage.getItem('wedding_guests') || '[]');
-            guests.push({ name, phone, status, count, time: new Date().toLocaleTimeString() });
-            localStorage.setItem('wedding_guests', JSON.stringify(guests));
-
-            document.getElementById('rsvpForm').reset();
             document.getElementById('rsvpSuccess').classList.remove('hidden');
             confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } });
-            setTimeout(() => document.getElementById('rsvpSuccess').classList.add('hidden'), 4000);
         }
 
-        function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
-        function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
-
-        function checkAdminPass() {
-            const pass = document.getElementById('adminPass').value;
-            if(pass === '1234') {
-                document.getElementById('loginPassSection').classList.add('hidden');
-                document.getElementById('guestListSection').classList.remove('hidden');
-                renderGuests();
-            } else { alert('Пароль қате!'); }
-        }
-
-        function renderGuests() {
-            const guests = JSON.parse(localStorage.getItem('wedding_guests') || '[]');
-            const container = document.getElementById('guestsTableContainer');
-            if(guests.length === 0) { container.innerHTML = '<p class="text-center text-stone-500 py-4">Әлі ешкім жауап бермеді.</p>'; return; }
-            
-            container.innerHTML = guests.map(g => `
-                <div class="p-3 bg-white/80 rounded-xl border border-gold-200 space-y-1">
-                    <p class="font-bold text-stone-800">${g.name} (${g.count})</p>
-                    <p class="text-stone-500">📞 ${g.phone} | Status: <span class="text-gold-600 font-semibold">${g.status}</span></p>
-                </div>
-            `).join('');
-        }
-
-        function clearGuests() {
-            if(confirm('Бүкіл қонақтар тізімін өшіресіз бе?')) {
-                localStorage.removeItem('wedding_guests');
-                renderGuests();
-            }
-        }
-
-        /* ADVANCED KAZAKH TRADITIONAL ANIMATED DYNAMIC CANVAS */
+        /* DYNAMIC KAZAKH MOVING ORNAMENTS CANVAS */
         const canvas = document.getElementById('cinematicCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let mouseX = 0, mouseY = 0;
-
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize);
         resize();
 
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX - window.innerWidth/2) * 0.05;
-            mouseY = (e.clientY - window.innerHeight/2) * 0.05;
-        });
-
-        // Traditional Symbols
-        const symbols = ['✦', '✧', '🌸', '🕊️', '🌙', '⭐', '✨', '⚜️', '☀️'];
-
-        for(let i=0; i<65; i++) {
+        const symbols = ['✦', '✧', '🌸', '🕊️', '☀️', '⭐', '✨', '⚜️'];
+        for(let i=0; i<50; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 18 + 8,
+                size: Math.random() * 16 + 8,
                 symbol: symbols[Math.floor(Math.random() * symbols.length)],
-                speedY: Math.random() * 0.5 + 0.2,
+                speedY: Math.random() * 0.6 + 0.2,
                 speedX: Math.random() * 0.4 - 0.2,
-                opacity: Math.random() * 0.7 + 0.2,
-                depth: Math.random() * 2.5 + 0.5,
-                rotation: Math.random() * 360,
-                rotSpeed: Math.random() * 0.5 - 0.25
+                opacity: Math.random() * 0.6 + 0.2,
+                rotation: Math.random() * 360
             });
         }
 
@@ -569,7 +397,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 ctx.save();
-                ctx.translate(p.x + mouseX * p.depth, p.y + mouseY * p.depth);
+                ctx.translate(p.x, p.y);
                 ctx.rotate((p.rotation * Math.PI) / 180);
                 ctx.font = `${p.size}px serif`;
                 ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
@@ -578,10 +406,8 @@
                 
                 p.y += p.speedY;
                 p.x += p.speedX;
-                p.rotation += p.rotSpeed;
-
+                p.rotation += 0.2;
                 if(p.y > canvas.height) p.y = -20;
-                if(p.x > canvas.width) p.x = 0;
             });
             requestAnimationFrame(drawParticles);
         }
@@ -590,8 +416,7 @@
         
         const targetDate = new Date("2026-08-08T18:00").getTime();
         setInterval(() => {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
+            const diff = targetDate - new Date().getTime();
             if (diff > 0) {
                 document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
                 document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
