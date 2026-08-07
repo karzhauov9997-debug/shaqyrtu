@@ -65,7 +65,7 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
         }
         
@@ -80,17 +80,33 @@
             box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
         }
 
-        .gold-text {
-            color: #C59B27;
+        .gold-text { color: #C59B27; }
+
+        /* REAL FIXED MOVING KAZAKH ORNAMENTS */
+        .kazakh-ornament-left {
+            position: fixed;
+            top: 25%;
+            left: -20px;
+            width: 140px;
+            height: 140px;
+            z-index: 20;
+            pointer-events: none;
+            color: #D4AF37;
+            opacity: 0.65;
+            transition: transform 0.1s linear;
         }
 
-        /* Floating Parallax Kazakh Ornaments */
-        .movable-ornament {
-            position: absolute;
+        .kazakh-ornament-right {
+            position: fixed;
+            top: 60%;
+            right: -20px;
+            width: 140px;
+            height: 140px;
+            z-index: 20;
             pointer-events: none;
-            z-index: 2;
-            opacity: 0.25;
-            transition: transform 0.15s ease-out;
+            color: #D4AF37;
+            opacity: 0.65;
+            transition: transform 0.1s linear;
         }
 
         @keyframes spinSlow {
@@ -115,6 +131,19 @@
 
     <div id="scrollProgress"></div>
 
+    <!-- ANCHORED REAL KAZAKH ORNAMENTS (ҚОШҚАРМҮЙІЗ) -->
+    <div class="kazakh-ornament-left" id="ornamentLeft">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 10 C35 10 25 20 25 35 C25 45 32 52 40 55 C30 58 10 65 10 80 C10 92 22 98 35 98 C48 98 50 85 50 85 C50 85 52 98 65 98 C78 98 90 92 90 80 C90 65 70 58 60 55 C68 52 75 45 75 35 C75 20 65 10 50 10 Z M50 22 C58 22 63 27 63 35 C63 42 57 47 50 47 C43 47 37 42 37 35 C37 27 42 22 50 22 Z M33 86 C26 86 20 82 20 75 C20 67 32 62 43 60 C38 72 36 82 33 86 Z M67 86 C64 82 62 72 57 60 C68 62 80 67 80 75 C80 82 74 86 67 86 Z"/>
+        </svg>
+    </div>
+
+    <div class="kazakh-ornament-right" id="ornamentRight">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 10 C35 10 25 20 25 35 C25 45 32 52 40 55 C30 58 10 65 10 80 C10 92 22 98 35 98 C48 98 50 85 50 85 C50 85 52 98 65 98 C78 98 90 92 90 80 C90 65 70 58 60 55 C68 52 75 45 75 35 C75 20 65 10 50 10 Z M50 22 C58 22 63 27 63 35 C63 42 57 47 50 47 C43 47 37 42 37 35 C37 27 42 22 50 22 Z M33 86 C26 86 20 82 20 75 C20 67 32 62 43 60 C38 72 36 82 33 86 Z M67 86 C64 82 62 72 57 60 C68 62 80 67 80 75 C80 82 74 86 67 86 Z"/>
+        </svg>
+    </div>
+
     
     <div class="fixed top-6 right-6 z-50">
         <button id="musicToggle" onclick="toggleMusic()" class="w-14 h-14 rounded-full glass-tilda flex items-center justify-center text-gold-500 shadow-xl border border-gold-400 active:scale-95 transition-all">
@@ -124,30 +153,24 @@
     </div>
     
 
-    <!-- HERO SECTION (TILDA STYLE) -->
+    <!-- HERO SECTION -->
     <section class="relative min-h-screen w-full flex items-center justify-center text-center px-4 overflow-hidden py-20">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
             <div class="absolute inset-0 bg-gradient-to-b from-warmdark/80 via-warmdark/60 to-warmdark/90 backdrop-blur-[2px]"></div>
         </div>
 
-        <!-- Parallax Kazakh Ornaments on Sides -->
-        <div class="movable-ornament top-16 left-6 w-28 sm:w-44 text-gold-400 ornament-parallax-1">
-            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 C20 30 0 50 50 100 C100 50 80 30 50 0 Z"/></svg>
-        </div>
-        <div class="movable-ornament top-16 right-6 w-28 sm:w-44 text-gold-400 ornament-parallax-2">
-            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 C20 30 0 50 50 100 C100 50 80 30 50 0 Z"/></svg>
-        </div>
-
         <div class="relative z-10 text-white max-w-3xl space-y-6 px-4">
             <p class="font-montserrat text-xs sm:text-sm tracking-[0.3em] uppercase text-gold-300 font-medium">Шақыру карточкасы</p>
             
-            <div class="w-20 sm:w-28 mx-auto text-gold-400 opacity-80 animate-spin-slow">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="50" cy="50" r="45" />
-                    <line x1="50" y1="5" x2="50" y2="95" />
-                    <line x1="5" y1="50" x2="95" y2="50" />
-                    <line x1="18" y1="18" x2="82" y2="82" />
-                    <line x1="18" y1="82" x2="82" y2="18" />
+            <!-- SHAQYRAQ SVG ORNAMENT IN CENTER -->
+            <div class="w-24 sm:w-32 mx-auto text-gold-400 opacity-90 animate-spin-slow">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
+                    <circle cx="50" cy="50" r="44" />
+                    <circle cx="50" cy="50" r="20" />
+                    <line x1="50" y1="6" x2="50" y2="94" />
+                    <line x1="6" y1="50" x2="94" y2="50" />
+                    <line x1="19" y1="19" x2="81" y2="81" />
+                    <line x1="19" y1="81" x2="81" y2="19" />
                 </svg>
             </div>
 
@@ -176,11 +199,12 @@
 
     <!-- INVITATION TEXT -->
     <section id="invitation" class="py-24 px-4 max-w-3xl mx-auto text-center gs-reveal relative">
-        <div class="movable-ornament -top-12 left-1/2 -translate-x-1/2 w-28 text-gold-500 opacity-20 ornament-rotate">
-            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>
-        </div>
-
         <div class="glass-tilda p-8 sm:p-16 rounded-3xl relative">
+            <div class="w-16 h-16 mx-auto text-gold-500 mb-4">
+                <svg viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 10 C35 10 25 20 25 35 C25 45 32 52 40 55 C30 58 10 65 10 80 C10 92 22 98 35 98 C48 98 50 85 50 85 C50 85 52 98 65 98 C78 98 90 92 90 80 C90 65 70 58 60 55 C68 52 75 45 75 35 C75 20 65 10 50 10 Z"/>
+                </svg>
+            </div>
             <h2 class="font-cormorant text-3xl sm:text-5xl font-semibold gold-text mb-6">
                 Құрметті Қонақтар!
             </h2>
@@ -293,18 +317,16 @@
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // TILDA STYLE PARALLAX ORNAMENT MOVEMENTS
+        // DYNAMIC PARALLAX & ROTATION FOR KAZAKH ORNAMENTS
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
             document.getElementById('scrollProgress').style.width = (scrolled / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%';
 
-            const orn1 = document.querySelector('.ornament-parallax-1');
-            const orn2 = document.querySelector('.ornament-parallax-2');
-            const ornRot = document.querySelector('.ornament-rotate');
+            const ornLeft = document.getElementById('ornamentLeft');
+            const ornRight = document.getElementById('ornamentRight');
 
-            if(orn1) orn1.style.transform = `translateY(${scrolled * 0.22}px) rotate(${scrolled * 0.08}deg)`;
-            if(orn2) orn2.style.transform = `translateY(${scrolled * 0.18}px) rotate(-${scrolled * 0.08}deg)`;
-            if(ornRot) ornRot.style.transform = `translateX(-50%) rotate(${scrolled * 0.12}deg)`;
+            if(ornLeft) ornLeft.style.transform = `translateY(${scrolled * 0.15}px) rotate(${scrolled * 0.2}deg)`;
+            if(ornRight) ornRight.style.transform = `translateY(-${scrolled * 0.15}px) rotate(-${scrolled * 0.2}deg)`;
         });
 
         gsap.registerPlugin(ScrollTrigger);
