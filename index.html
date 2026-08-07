@@ -49,6 +49,8 @@
             color: #1C1917;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.88);
@@ -58,7 +60,7 @@
             box-shadow: 0 20px 40px rgba(139, 101, 8, 0.05);
         }
         .gold-glow {
-            filter: drop-shadow(0px 2px 6px rgba(212, 175, 55, 0.4));
+            filter: drop-shadow(0px 2px 8px rgba(212, 175, 55, 0.5));
         }
         #particleCanvas {
             position: fixed;
@@ -82,34 +84,39 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
 
-        /* STRICT FIX FOR CORNER ORNAMENTS ON MOBILE */
+        /* CORNER ORNAMENTS STYLES */
         .corner-ornament-left {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            width: 55px;
-            height: 55px;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
             z-index: 30;
             pointer-events: none;
         }
         .corner-ornament-right {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 55px;
-            height: 55px;
+            top: 15px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
             z-index: 30;
             pointer-events: none;
             transform: scaleX(-1);
         }
+
         @media (min-width: 640px) {
             .corner-ornament-left, .corner-ornament-right {
-                width: 90px;
-                height: 90px;
-                top: 24px;
+                width: 100px;
+                height: 100px;
+                top: 25px;
             }
-            .corner-ornament-left { left: 24px; }
-            .corner-ornament-right { right: 24px; }
+            .corner-ornament-left { left: 25px; }
+            .corner-ornament-right { right: 25px; }
+            .glass-card {
+                padding: 3rem !important;
+                border-radius: 2rem !important;
+            }
         }
     </style>
 </head>
@@ -126,15 +133,17 @@
                 <div class="absolute inset-0 bg-gradient-to-b from-warmDark/85 via-warmDark/65 to-warmDark/90 backdrop-blur-[1px]"></div>
             </div>
 
-            <!-- EXACT SVG ORNAMENTS IN CORNERS -->
+            <!-- ELEGANT KAZAKH CORNER ORNAMENTS -->
             <div class="corner-ornament-left gold-glow text-gold-400 opacity-90">
                 <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                    <path d="M10 10 L40 10 C30 20 20 30 20 50 C20 70 30 80 40 90 L10 90 Z M50 10 C35 10 25 25 25 40 C25 50 35 55 45 50 C30 65 30 85 50 85 C60 85 60 70 50 65 C40 60 40 45 50 40 Z"/>
+                    <path d="M0 0 L100 0 L100 10 L20 10 L20 100 L0 100 Z M30 30 C 50 30, 70 50, 70 70 C 50 70, 30 50, 30 30 Z" />
+                    <circle cx="50" cy="50" r="8" fill="currentColor"/>
                 </svg>
             </div>
             <div class="corner-ornament-right gold-glow text-gold-400 opacity-90">
                 <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                    <path d="M10 10 L40 10 C30 20 20 30 20 50 C20 70 30 80 40 90 L10 90 Z M50 10 C35 10 25 25 25 40 C25 50 35 55 45 50 C30 65 30 85 50 85 C60 85 60 70 50 65 C40 60 40 45 50 40 Z"/>
+                    <path d="M0 0 L100 0 L100 10 L20 10 L20 100 L0 100 Z M30 30 C 50 30, 70 50, 70 70 C 50 70, 30 50, 30 30 Z" />
+                    <circle cx="50" cy="50" r="8" fill="currentColor"/>
                 </svg>
             </div>
 
@@ -172,10 +181,10 @@
 
         <!-- INVITATION SECTION -->
         <section id="invitation" class="py-16 sm:py-24 px-4 max-w-4xl mx-auto relative">
-            <div class="glass-card p-6 sm:p-16 rounded-[2rem] sm:rounded-[2.5rem] text-center space-y-6 relative overflow-hidden">
+            <div class="glass-card p-6 sm:p-16 rounded-[2rem] text-center space-y-6 relative overflow-hidden">
                 <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gold-500">
                     <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                        <path d="M50 0 C30 20 0 30 0 50 C0 70 30 80 50 100 C70 80 100 70 100 50 C100 30 70 20 50 0 Z M50 30 C60 40 70 50 50 70 C30 50 40 40 50 30 Z"/>
+                        <path d="M50 10 C 30 30, 10 50, 50 90 C 90 50, 70 30, 50 10 Z"/>
                     </svg>
                 </div>
 
@@ -193,13 +202,13 @@
             </div>
         </section>
 
-        <!-- AVATAR / CHARACTER SECTION -->
+        <!-- AVATAR / COUPLE IMAGE -->
         
 
         <!-- DETAILS SECTION -->
         <section class="py-12 sm:py-20 px-4 max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
-                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center space-y-3">
+                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl text-center space-y-3">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-gold-500 flex items-center justify-center text-2xl sm:text-3xl">
                         <i class="far fa-calendar-alt"></i>
                     </div>
@@ -207,7 +216,7 @@
                     <p class="font-cormorant text-2xl sm:text-3xl font-bold text-stone-800">2026-08-25</p>
                 </div>
 
-                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center space-y-3">
+                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl text-center space-y-3">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-gold-500 flex items-center justify-center text-2xl sm:text-3xl">
                         <i class="far fa-clock"></i>
                     </div>
@@ -215,7 +224,7 @@
                     <p class="font-cormorant text-2xl sm:text-3xl font-bold text-stone-800">18:00</p>
                 </div>
 
-                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center space-y-3">
+                <div class="detail-card glass-card p-6 sm:p-8 rounded-2xl text-center space-y-3">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-gold-500 flex items-center justify-center text-2xl sm:text-3xl">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -232,10 +241,10 @@
         <section class="py-12 sm:py-16 px-4 max-w-4xl mx-auto text-center space-y-6">
             <h3 class="font-cormorant text-2xl sm:text-5xl font-bold text-gold-600">Той Салтанатына Дейін:</h3>
             <div class="grid grid-cols-4 gap-2 sm:gap-6">
-                <div class="timer-card p-3 sm:p-6 rounded-xl sm:rounded-2xl"><span id="days" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Күн</p></div>
-                <div class="timer-card p-3 sm:p-6 rounded-xl sm:rounded-2xl"><span id="hours" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Сағат</p></div>
-                <div class="timer-card p-3 sm:p-6 rounded-xl sm:rounded-2xl"><span id="minutes" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Минут</p></div>
-                <div class="timer-card p-3 sm:p-6 rounded-xl sm:rounded-2xl"><span id="seconds" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Секунд</p></div>
+                <div class="timer-card p-3 sm:p-6 rounded-xl"><span id="days" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Күн</p></div>
+                <div class="timer-card p-3 sm:p-6 rounded-xl"><span id="hours" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Сағат</p></div>
+                <div class="timer-card p-3 sm:p-6 rounded-xl"><span id="minutes" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Минут</p></div>
+                <div class="timer-card p-3 sm:p-6 rounded-xl"><span id="seconds" class="font-cormorant text-2xl sm:text-6xl font-bold text-stone-800">00</span><p class="text-[8px] sm:text-xs uppercase tracking-widest text-stone-400 mt-1">Секунд</p></div>
             </div>
         </section>
         
@@ -318,20 +327,6 @@
         gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2 });
         gsap.from(".hero-subtitle", { opacity: 0, y: 20, duration: 1.2, delay: 0.4 });
         gsap.from(".hero-shanyraq", { opacity: 0, scale: 0.6, rotation: -90, duration: 1.4 });
-
-        gsap.to(".corner-ornament-left", {
-            scrollTrigger: { trigger: "body", start: "top top", end: "bottom top", scrub: 1 },
-            y: 80, rotation: 25
-        });
-        gsap.to(".corner-ornament-right", {
-            scrollTrigger: { trigger: "body", start: "top top", end: "bottom top", scrub: 1 },
-            y: 80, rotation: -25
-        });
-
-        gsap.from(".detail-card", {
-            scrollTrigger: { trigger: ".detail-card", start: "top 85%" },
-            opacity: 0, y: 40, duration: 0.8, stagger: 0.15, ease: "power2.out"
-        });
 
         function handleRSVP(e) {
             e.preventDefault();
